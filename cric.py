@@ -30,12 +30,12 @@ def check_highlights():
         soup = BeautifulSoup(page.content, "html.parser")
         commentaries = soup.find_all(attrs={'class': 'commtext'})
         count=0
+        last_commentary = get_last_commentary()
         for commentary in commentaries:
-            last_commentary = get_last_commentary()
             if(count==0):
                 put_last_commentary(commentary.text)
             count=count+1
-            if last_commentary == commentary.text:
+            if last_commentary['value'] == commentary.text:
                 break
             for filter in filter_items:
                 if filter in str(commentary):
@@ -46,6 +46,8 @@ def put_last_commentary(commentary):
 
 def get_last_commentary():
     return db.get(key='lastcommentary')
+
+check_highlights()
 
 
 
