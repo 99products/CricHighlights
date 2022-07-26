@@ -39,6 +39,8 @@ Check for the pattern, and filter commentaries
                 if filter_item in str(commentary):
                     return commentary.text
 
-print(check_highlights())
+# print(check_highlights())
 
+a='thiyaga'
+print(a[:30])
 # print(job_elements)
