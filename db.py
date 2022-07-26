@@ -12,3 +12,9 @@ def put_last_commentary(commentary):
 
 def get_last_commentary():
     return db.get(key='lastcommentary')
+
+def put_last_sent_message(message):
+    db.put(key='lastsentmessage',data=message)
+
+def get_last_sent_message():
+    return db.get(key='lastsentmessage')

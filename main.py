@@ -1,5 +1,6 @@
 from deta import app
 import telegram
+import db
 
 import cric
 import os
@@ -16,6 +17,9 @@ def cron_job(event):
     return "running on a schedule"
 
 def send_message(message):
-    bot = telegram.Bot(token=TELEGRAM_TOKEN)
-    bot.sendMessage(chat_id=TELEGRAM_CHAT_ID, text=message)
-    return "message sent"
+    oldmessage=db.get_last_sent_message()
+    if oldmessage!=message:
+        bot = telegram.Bot(token=TELEGRAM_TOKEN)
+        bot.sendMessage(chat_id=TELEGRAM_CHAT_ID, text=message)
+        db.put_last_sent_message(message)
+        return "message sent"
