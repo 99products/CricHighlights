@@ -20,6 +20,13 @@ def send_message(message):
     oldmessage=db.get_last_sent_message()
     if oldmessage!=message:
         bot = telegram.Bot(token=TELEGRAM_TOKEN)
-        bot.sendMessage(chat_id=TELEGRAM_CHAT_ID, text=message)
+        if oldmessage and oldmessage[:10]==message[:10]:
+            print("message same as last message")
+            messageid=db.get_last_message_id()
+            if messageid:
+                bot.editMessageText(chat_id=TELEGRAM_CHAT_ID, message_id=messageid, text=message)
+        else:
+            sentmessage = bot.sendMessage(chat_id=TELEGRAM_CHAT_ID, text=message)
+            db.put_last_message_id(sentmessage.message_id)
         db.put_last_sent_message(message)
         return "message sent"

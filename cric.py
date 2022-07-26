@@ -39,6 +39,6 @@ Check for the pattern, and filter commentaries
                 if filter_item in str(commentary):
                     return commentary.text
 
-check_highlights()
+print(check_highlights())
 
 # print(job_elements)
