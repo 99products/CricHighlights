@@ -1,14 +1,13 @@
 import requests
+import db
 from bs4 import BeautifulSoup
 from deta import Deta
 
-import os
-projectkey=os.getenv('project_key').strip()
+
 
 URL = "https://m.cricbuzz.com/"
 filter_items = ['<b>FOUR</b>', '<b>SIX</b>', '<b>out</b>']
-deta = Deta(projectkey)
-db = deta.Base("crichighlights")
+
 
 
 # Store the last commentary text to check in next run
@@ -30,10 +29,10 @@ def check_highlights():
         soup = BeautifulSoup(page.content, "html.parser")
         commentaries = soup.find_all(attrs={'class': 'commtext'})
         count=0
-        last_commentary = get_last_commentary()
+        last_commentary = db.get_last_commentary()
         for commentary in commentaries:
             if(count==0):
-                put_last_commentary(commentary.text)
+                db.put_last_commentary(commentary.text)
             count=count+1
             if last_commentary['value'] == commentary.text:
                 break
@@ -41,16 +40,6 @@ def check_highlights():
                 if filter in str(commentary):
                     return commentary.text
 
-def put_last_commentary(commentary):
-    db.put(key='lastcommentary',data=commentary)
-
-def get_last_commentary():
-    return db.get(key='lastcommentary')
-
 check_highlights()
-
-
-
-
 
 # print(job_elements)
