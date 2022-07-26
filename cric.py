@@ -1,9 +1,6 @@
 import requests
 import db
 from bs4 import BeautifulSoup
-from deta import Deta
-
-
 
 URL = "https://m.cricbuzz.com/"
 filter_items = ['<b>FOUR</b>', '<b>SIX</b>', '<b>out</b>']
@@ -39,8 +36,4 @@ Check for the pattern, and filter commentaries
                 if filter_item in str(commentary):
                     return commentary.text
 
-# print(check_highlights())
 
-a='thiyaga'
-print(a[:30])
-# print(job_elements)

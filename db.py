@@ -1,8 +1,7 @@
 import os
 from deta import Deta
 
-# projectkey=os.getenv('project_key').strip()
-projectkey='a0mmxdo6_4bKC7Q8nek8yT3Q4CXMWQgKKkwV1aYjB'
+projectkey=os.getenv('project_key').strip()
 
 deta = Deta(projectkey)
 db = deta.Base("crichighlights")
