@@ -26,8 +26,10 @@ Check for the pattern, and filter commentaries
         commentaries = soup.find_all(attrs={'class': 'commtext'})
         count=0
         last_commentary = db.get_last_commentary()
+        putlastdone=False
         for commentary in commentaries:
-            if count==0:
+            if commentary.text and (not putlastdone):
+                putlastdone=True
                 db.put_last_commentary(commentary.text)
             count=count+1
             if last_commentary['value'] == commentary.text:
