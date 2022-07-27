@@ -32,4 +32,3 @@ def send_message(message):
         db.put_last_sent_message(message)
         return "message sent"
 
-cron_job(None)
