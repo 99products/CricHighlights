@@ -20,10 +20,20 @@ Check for the pattern, and return first matching commentary
         commentaryurl = URL + cricket_scores[2].attrs['href']
         page = requests.get(commentaryurl)
         soup = BeautifulSoup(page.content, "html.parser")
+        scores=soup.find_all(attrs={'class':'miniscore-teams ui-bat-team-scores'})
+        batteamscore=''
+        bowlteamscore=''
+        if scores:
+            print(scores[0].text)
+            batteamscore=scores[0].text
+        scores=soup.find_all(attrs={'class':'teamscores ui-bowl-team-scores'})
+        if scores:
+            print(scores[0].text)
+            bowlteamscore=scores[0].text
+        
         commentaries = soup.find_all(attrs={'class': 'commtext'})
         for commentary in commentaries:
             for filter_item in filter_items:
                 if filter_item in str(commentary):
-                    return commentary.text
-
+                    return commentary.text+"\n\n"+batteamscore+"\n"+bowlteamscore
 
