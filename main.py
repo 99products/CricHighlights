@@ -19,9 +19,9 @@ def cron_job(event):
 
 def send_message(message):
     oldmessage=db.get_last_sent_message()
-    if oldmessage['value']!=message:
+    if oldmessage!=message:
         bot = telegram.Bot(token=TELEGRAM_TOKEN)
-        if oldmessage and oldmessage['value'][:10]== message[:10]:
+        if oldmessage and oldmessage[:10]== message[:10]:
             messageid=db.get_last_message_id()
             print("message same as last message "+str(messageid))
             if messageid:

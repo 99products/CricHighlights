@@ -11,10 +11,14 @@ def put_last_sent_message(message):
     db.put(key='lastsentmessage',data=message)
 
 def get_last_sent_message():
-    return db.get(key='lastsentmessage')
+    lastsentmessage= db.get(key='lastsentmessage')
+    if lastsentmessage:
+        return lastsentmessage['value']
 
 def put_last_message_id(message):
     db.put(key='lastmessageid',data=message)
 
 def get_last_message_id():
-    return db.get(key='lastmessageid')
+    lastmessageid= db.get(key='lastmessageid')
+    if lastmessageid:
+        return lastmessageid['value']
