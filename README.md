@@ -88,4 +88,4 @@ Github actions helps to deploy code automatically to deta.sh on commit/push new 
 
 5. Set the projectkey as 'DETA_TOKEN' secret in your repository -> settings/secrets/actions , which will be referred in your action
 
-6. Once set, for every push to the repository the changes will be automatically deployed to deta
+6. Once set, for every code push to the repo, the changes will be automatically deployed to deta, checkout the workflow execution in the 'actions' tab 
