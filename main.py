@@ -23,7 +23,6 @@ def send_message(message):
         bot = telegram.Bot(token=TELEGRAM_TOKEN)
         if oldmessage and oldmessage[:10]== message[:10]:
             messageid=db.get_last_message_id()
-            print("message same as last message "+str(messageid))
             if messageid:
                 bot.editMessageText(chat_id=TELEGRAM_CHAT_ID, message_id=messageid, text=message)
         else:
