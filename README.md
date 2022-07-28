@@ -60,12 +60,12 @@ But IMO [deta.sh](https://deta.sh "deta.sh") is my favorite for its simplicity.
 
    - Sample .env file
 
-
+	```
 	   telegram_token=<your telegram token>
 	   my_telegram_id=<your telegram id>
 	   project_key=<your deta project key>
 	
-
+	```
 
 
 ### Telegram Bot Integration
