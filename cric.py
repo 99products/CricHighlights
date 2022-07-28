@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 
 URL = "https://m.cricbuzz.com/"
 filter_items = ['<b>FOUR</b>', '<b>SIX</b>', '<b>out</b>']
+status_items=['rain','stumps','won','lost','break']
 
 #TODO #3 find ways to send commentary only for india matches
 #TODO #4 add formatting to the messages
@@ -31,8 +32,8 @@ Check for the pattern, and return first matching commentary
         if scores:
             bowlteamscore=scores.text
         status = soup.find(attrs={'class': 'cbz-ui-status'})
-        #if status found, then match is over or stumps
-        if status:
+        #if status found, then check if status has pattern for match complete or rain or stumps
+        if status and [x for x in status_items if (x in status.text.lower())]:
             print(status.text)
             return status.text+'\n'+batteamscore+'\n'+bowlteamscore
         
