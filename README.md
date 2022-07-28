@@ -45,16 +45,26 @@ But IMO [deta.sh](https://deta.sh "deta.sh") is my favorite for its simplicity.
 		```
 3. Once deployed, enable the log, and confirm if the schedule is working properly in the 'visor' tab of your micro in web.deta.sh dashboard
 
+
 4. We also use Deta base for our duplicate check (check db.py),  Checkout the doc here for the usage --> https://docs.deta.sh/docs/base/sdk
+
 
 5. The project key to use deta can be retrieved from,
      https://web.deta.sh/home/%username%/default/settings/
 
+
 6. All our secrets ( deta project key, telegram token etc.. ) cannot be exposed in our code, so we need to refer from environment variables.
-To set the environment variables in deta, add all your keys in a file called .env,  as key-value pairs, and update it to deta using the following command.
+   - To set the environment variables in deta, add all your keys in a file called .env,  as key-value pairs, and update it to deta using the following command.
 
-	> deta update -e .env
+       > deta update -e .env
 
+   - Sample .env file
+
+
+	   telegram_token=<your telegram token>
+	   my_telegram_id=<your telegram id>
+	   project_key=<your deta project key>
+	
 
 
 
