@@ -1,7 +1,7 @@
 # CricHighlights
-Automated bot which sends cricket commentaries (only the highlights) to telegram channel
+Automated bot which sends cricket commentaries (only the highlights) to telegram channel, subscribe to https://t.me/crickt_highlights to check this out in action
 
-This project is created for learning,
+This project is created for learning, 
 
 1. Web Scraping in python
 2. Server hosting with deta.sh
